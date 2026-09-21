@@ -1,27 +1,14 @@
 <%- include('partials/header') %>
     <main>
-        <section class="page-header">
-            <h1>
-                <%= title %>
-            </h1>
-            <p>Here are a few of our partner organizations:</p>
-        </section>
-        <section class="card-grid">
-            <div class="card">
-                <img src="/images/brightfuture-logo.png" alt="BrightFuture Builders logo">
-                <h2>BrightFuture Builders</h2>
-                <p><a href="mailto:info@brightfuture.org">info@brightfuture.org</a></p>
-            </div>
-            <div class="card">
-                <img src="/images/greenharvest-logo.png" alt="GreenHarvest Growers logo">
-                <h2>GreenHarvest Growers</h2>
-                <p><a href="mailto:contact@greenharvest.org">contact@greenharvest.org</a></p>
-            </div>
-            <div class="card">
-                <img src="/images/unityserve-logo.png" alt="UnityServe Volunteers logo">
-                <h2>UnityServe Volunteers</h2>
-                <p><a href="mailto:hello@unityserve.org">hello@unityserve.org</a></p>
-            </div>
-        </section>
+        <h1><%= title %></h1>
+        
+        <p>Here are a few of our partner organizations:</p>
+        <ul>
+
+            <% organizations.forEach(organization => { %>
+                <li><img src="/images/<%= organization.logo_filename %>" alt="<%= organization.name %> logo"><strong><%= organization.name %></strong>: <%= organization.contact_email %></li>
+            <% }); %>
+        </ul>
     </main>
-    <%- include('partials/footer') %>
+
+<%- include('partials/footer') %>
