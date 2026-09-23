@@ -1,29 +1,26 @@
-<!-- views/projects.ejs -->
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Service Projects</title>
-</head>
-
-<body>
-    <h1>Available Service Projects</h1>
-
-    <ul>
-        <% projects.forEach(project=> { %>
-            <li>
-                <strong>
-                    <%= new Date(project.project_date).toLocaleDateString('en-US', { year: 'numeric' , month: 'short' ,
-                        day: 'numeric' }) %>:
-                </strong>
-                <%= project.title %> (<%= project.organization_name %>)
+<%- include('partials/header') %>
+    <main>
+        <section class="page-header">
+            <h1>
+                <%= title %>
+            </h1>
+            <p>Browse our current service opportunities below.</p>
+        </section>
+        <section class="list-section">
+            <ul class="styled-list">
+                <% projects.forEach(project=> { %>
+                    <li>
+                        <h2>
+                            <%= new Date(project.project_date).toLocaleDateString('en-US', { year: 'numeric' ,
+                                month: 'short' , day: 'numeric' }) %>:
+                                <%= project.title %> (<%= project.organization_name %>)
+                        </h2>
                         <p>
-                            <%= project.description %> - Location: <%= project.location %>
+                            <%= project.description %> &mdash; Location: <%= project.location %>
                         </p>
-            </li>
-            <% }) %>
-    </ul>
-</body>
-
-</html>
+                    </li>
+                    <% }); %>
+            </ul>
+        </section>
+    </main>
+    <%- include('partials/footer') %>

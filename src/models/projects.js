@@ -1,6 +1,6 @@
-import db from './db.js'; // Replaced require() with import
+import db from './db.js';
 
-async function getAllProjects() {
+const getAllProjects = async () => {
     const query = `
         SELECT p.project_id, p.title, p.description, p.location, p.project_date, o.name AS organization_name
         FROM service_project p
@@ -8,9 +8,9 @@ async function getAllProjects() {
         ORDER BY p.project_date ASC;
     `;
 
-    // Using db.query instead of pool.query to match your db.js setup
     const result = await db.query(query);
+
     return result.rows;
 }
 
-export { getAllProjects }; // Replaced module.exports with export
+export { getAllProjects }

@@ -1,28 +1,19 @@
-<!-- src/views/categories.ejs -->
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>
-        <%= title %>
-    </title>
-</head>
-
-<body>
-    <h1>
-        <%= title %>
-    </h1>
-
-    <p>Browse our projects by the following categories:</p>
-
-    <ul>
-        <% categories.forEach(category=> { %>
-            <li>
-                <%= category.name %>
-            </li>
-            <% }) %>
-    </ul>
-</body>
-
-</html>
+<%- include('partials/header') %>
+    <main>
+        <section class="page-header">
+            <h1>
+                <%= title %>
+            </h1>
+            <p>Browse our projects by the following categories:</p>
+        </section>
+        <section class="list-section">
+            <ul class="styled-list category-list">
+                <% categories.forEach(category=> { %>
+                    <li>
+                        <%= category.name %>
+                    </li>
+                    <% }); %>
+            </ul>
+        </section>
+    </main>
+    <%- include('partials/footer') %>
