@@ -1,4 +1,7 @@
+import dotenv from 'dotenv';
 import { Pool } from 'pg';
+
+dotenv.config({ quiet: true });
 
 /**
  * Connection pool for PostgreSQL database.
