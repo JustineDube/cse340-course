@@ -10,7 +10,7 @@
             <ul class="styled-list category-list">
                 <% categories.forEach(category=> { %>
                     <li>
-                        <%= category.name %>
+                        <a href="/category/<%= category.category_id %>"><%= category.name %></a>
                     </li>
                     <% }); %>
             </ul>
