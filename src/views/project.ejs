@@ -19,6 +19,8 @@
             <%= project.organization_name %>
         </a>
     </p>
+    <p><a href="/edit-project/<%= project.project_id %>">Edit Project</a></p>
+    <p><a href="/project/<%= project.project_id %>/assign-categories">Edit Categories</a></p>
 
     <h3>Categories</h3>
     <% if (categories.length > 0) { %>
