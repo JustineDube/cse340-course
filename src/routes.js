@@ -31,10 +31,27 @@ import {
     processAssignCategoriesForm
 } from './controllers/categories.js';
 import { testErrorPage } from './controllers/errors.js';
+import {
+    showUserRegistrationForm,
+    processUserRegistrationForm,
+    userRegistrationValidation,
+    showLoginForm,
+    processLoginForm,
+    processLogout,
+    loginValidation,
+    requireLogin,
+    showDashboard
+} from './controllers/users.js';
 
 const router = express.Router();
 
 router.get('/', showHomePage);
+router.get('/register', showUserRegistrationForm);
+router.post('/register', userRegistrationValidation, processUserRegistrationForm);
+router.get('/login', showLoginForm);
+router.post('/login', loginValidation, processLoginForm);
+router.get('/logout', processLogout);
+router.get('/dashboard', requireLogin, showDashboard);
 router.get('/organizations', showOrganizationsPage);
 router.get('/organization/:id', showOrganizationDetailsPage);
 router.get('/edit-organization/:id', showEditOrganizationForm);

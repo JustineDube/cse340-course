@@ -153,6 +153,11 @@ h3 {
     border-bottom-color: var(--color-accent);
 }
 
+.nav-user {
+    color: #ffffff;
+    font-weight: 600;
+}
+
 /* -------------------- Flash messages -------------------- */
 .alert {
     max-width: var(--max-width);
@@ -228,6 +233,58 @@ main {
 .page-header p {
     color: var(--color-text-muted);
     font-size: 1.05rem;
+}
+
+/* -------------------- Registration form -------------------- */
+.registration {
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.registration-form {
+    display: grid;
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+}
+
+.form-group {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.form-group label {
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.65rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font: inherit;
+}
+
+.form-group small {
+    color: var(--color-text-muted);
+}
+
+.registration-form button {
+    justify-self: start;
+    padding: 0.65rem 1rem;
+    color: #ffffff;
+    background-color: var(--color-primary);
+    border: 0;
+    border-radius: 4px;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.registration-form button:hover {
+    background-color: var(--color-primary-dark);
 }
 
 /* -------------------- Cards (Organizations) -------------------- */
