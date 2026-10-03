@@ -26,7 +26,7 @@
                     <li><a href="/organizations">Organizations</a></li>
                     <li><a href="/projects">Projects</a></li>
                     <li><a href="/categories">Categories</a></li>
-                    <% if (user) { %>
+                    <% if (typeof user !== 'undefined' && user) { %>
                         <li><span class="nav-user">Signed in as <%= user.name %></span></li>
                         <li><a href="/logout">Logout</a></li>
                     <% } else { %>
