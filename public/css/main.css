@@ -357,6 +357,33 @@ main {
     border-left-color: var(--color-accent);
 }
 
+/* -------------------- Data tables -------------------- */
+.table-scroll {
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--color-bg);
+}
+
+.data-table th,
+.data-table td {
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--color-border);
+    text-align: left;
+}
+
+.data-table th {
+    color: #ffffff;
+    background-color: var(--color-primary);
+}
+
+.data-table tbody tr:nth-child(even) {
+    background-color: var(--color-surface);
+}
+
 /* -------------------- Footer -------------------- */
 .site-footer {
     background-color: var(--color-primary-dark);

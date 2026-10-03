@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import { body, validationResult } from 'express-validator';
-import { authenticateUser, createUser } from '../models/users.js';
+import { authenticateUser, createUser, getAllUsers } from '../models/users.js';
 
 const userRegistrationValidation = [
     body('name')
@@ -25,8 +25,8 @@ const userRegistrationValidation = [
         .isString()
         .withMessage('Password is required')
         .bail()
-        .isLength({ min: 8 })
-        .withMessage('Password must be at least 8 characters long')
+        .isLength({ min: 7 })
+        .withMessage('Password must be at least 7 characters long')
         .bail()
         .custom((password) => Buffer.byteLength(password, 'utf8') <= 72)
         .withMessage('Password cannot exceed 72 bytes')
@@ -112,9 +112,28 @@ const requireLogin = (req, res, next) => {
     return next();
 };
 
+const requireRole = (role, unauthorizedRedirect = '/') => (req, res, next) => {
+    if (!req.session || !req.session.user) {
+        req.flash('error', 'You must be logged in to access this page.');
+        return res.redirect('/login');
+    }
+
+    if (req.session.user.role_name !== role) {
+        req.flash('error', 'You do not have permission to access this page.');
+        return res.redirect(unauthorizedRedirect);
+    }
+
+    return next();
+};
+
 const showDashboard = (req, res) => {
     const { name, email } = req.session.user;
     res.render('dashboard', { title: 'Dashboard', name, email });
+};
+
+const showUsersPage = async (req, res) => {
+    const users = await getAllUsers();
+    res.render('users', { title: 'Registered Users', users });
 };
 
 const processLoginForm = async (req, res, next) => {
@@ -170,5 +189,7 @@ export {
     processLogout,
     loginValidation,
     requireLogin,
-    showDashboard
+    requireRole,
+    showDashboard,
+    showUsersPage
 };
