@@ -90,16 +90,6 @@ const regenerateSession = (req) => new Promise((resolve, reject) => {
     });
 });
 
-const destroySession = (req) => new Promise((resolve, reject) => {
-    req.session.destroy((error) => {
-        if (error) {
-            reject(error);
-            return;
-        }
-        resolve();
-    });
-});
-
 const showLoginForm = (req, res) => {
     res.render('login', { title: 'Login' });
 };
@@ -172,7 +162,6 @@ const processLoginForm = async (req, res, next) => {
 
 const processLogout = async (req, res, next) => {
     try {
-        await destroySession(req);
         await regenerateSession(req);
     } catch (error) {
         return next(error);
