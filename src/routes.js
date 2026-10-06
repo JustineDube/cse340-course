@@ -13,6 +13,9 @@ import {
 import {
     showProjectsPage,
     showProjectDetailsPage,
+    addVolunteerToProject,
+    removeVolunteerFromProject,
+    removeVolunteerFromDashboard,
     showNewProjectForm,
     processNewProjectForm,
     showEditProjectForm,
@@ -57,6 +60,7 @@ router.post('/login', loginValidation, processLoginForm);
 router.get('/logout', processLogout);
 router.get('/dashboard', requireLogin, showDashboard);
 router.get('/users', requireAdminUsersPage, showUsersPage);
+router.post('/dashboard/projects/:projectId/remove-volunteer', requireLogin, removeVolunteerFromDashboard);
 router.get('/organizations', showOrganizationsPage);
 router.get('/organization/:id', showOrganizationDetailsPage);
 router.get('/edit-organization/:id', requireAdmin, showEditOrganizationForm);
@@ -70,6 +74,8 @@ router.get('/new-organization', requireAdmin, showNewOrganizationForm);
 router.post('/new-organization', requireAdmin, organizationValidation, processNewOrganizationForm);
 router.get('/projects', showProjectsPage);
 router.get('/project/:id', showProjectDetailsPage);
+router.post('/project/:id/volunteer', requireLogin, addVolunteerToProject);
+router.post('/project/:id/remove-volunteer', requireLogin, removeVolunteerFromProject);
 router.get('/new-project', requireAdmin, showNewProjectForm);
 router.post('/new-project', requireAdmin, projectValidation, processNewProjectForm);
 router.get('/edit-project/:id', requireAdmin, showEditProjectForm);
